@@ -11,7 +11,9 @@ ARG TARGETVARIANT
 RUN GOOS=${TARGETOS} \
     GOARCH=${TARGETARCH} \
     xcaddy build \
-    --with github.com/caddy-dns/hetzner
+    --with github.com/caddy-dns/hetzner \
+    --with github.com/greenpau/caddy-security@latest \
+    --with github.com/greenpau/caddy-trace@latest
 
 FROM caddy:${CADDY_VERSION}
 
