@@ -13,8 +13,9 @@ RUN GOOS=${TARGETOS} \
     xcaddy build \
     --with github.com/caddy-dns/hetzner \
     --with github.com/greenpau/caddy-security@latest \
-    --with github.com/greenpau/caddy-trace@latest
-
+    --with github.com/greenpau/caddy-trace@latest \
+    --with github.com/ggicci/caddy-jwt
+    
 FROM caddy:${CADDY_VERSION}
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
