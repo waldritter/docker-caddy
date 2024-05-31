@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  CADDY_VERSION: 2.7
+  CADDY_VERSION: 2.8
 
 jobs:
   docker:
