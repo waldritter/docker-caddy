@@ -1,6 +1,6 @@
 ARG CADDY_VERSION
 
-FROM --platform=${BUILDPLATFORM} caddy:${CADDY_VERSION}-builder AS builder
+FROM --platform=${BUILDPLATFORM} caddy:${CADDY_VERSION}-builder-alpine AS builder
 
 ARG BUILDPLATFORM
 ARG TARGETPLATFORM
@@ -15,7 +15,10 @@ RUN GOOS=${TARGETOS} \
     --with github.com/greenpau/caddy-security@latest \
     --with github.com/greenpau/caddy-trace@latest \
     --with github.com/ggicci/caddy-jwt
-    
-FROM caddy:${CADDY_VERSION}
+
+FROM caddy:${CADDY_VERSION}-alpine
+
+RUN apk add --no-cache tzdata
+ENV TZ=Europe/Berlin
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
