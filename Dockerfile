@@ -12,7 +12,7 @@ RUN GOOS=${TARGETOS} \
     GOARCH=${TARGETARCH} \
     xcaddy build \
     --with github.com/caddy-dns/hetzner/v2 \
-    --with github.com/greenpau/caddy-security@latest \
+    --with github.com/greenpau/caddy-security@main \
     --with github.com/greenpau/caddy-trace@latest \
     --with github.com/ggicci/caddy-jwt
 
